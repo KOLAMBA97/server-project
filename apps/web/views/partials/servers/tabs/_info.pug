@@ -1,0 +1,35 @@
+.row
+    .col-md-9
+        table.table.table-bordered
+            tr
+                td name
+                td {{$ctrl.server.name}}
+            tr
+                td host
+                td {{$ctrl.server.host}}
+            tr
+                td username
+                td {{$ctrl.server.username}}
+            tr
+                td password
+                td {{$ctrl.server.password}}
+            tr
+                td groupId
+                td {{$ctrl.server.groupId}}
+            tr
+                td status
+                td {{$ctrl.server.status === 'started'?'Запущен':'Остановлен'}}
+                    a.btn.btn-default.pull-right(
+                        ng-if="$ctrl.server.status === 'started'"
+                        ng-click='$ctrl.stop()'
+                    ) Остановить
+                    a.btn.btn-default.pull-right(
+                        ng-if="$ctrl.server.status === 'stoped'"
+                        ng-click='$ctrl.start()'
+                    ) Запустить
+                    a.btn.btn-default.pull-right(
+                        ng-click='$ctrl.restart()'
+                    ) Перезапуск
+                    
+    .col-md-3
+        a.btn.btn-default.pull-right(ui-sref="servers.edit({id:$ctrl.server._id})") Изменить
